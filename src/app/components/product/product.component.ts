@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,7 +15,9 @@ export class ProductComponent implements OnInit {
   filterText = '';
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
+    private cartService: CartService,
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -38,5 +42,10 @@ export class ProductComponent implements OnInit {
     this.productService.getProductsByCategoryId(id).subscribe((response) => {
       this.products = response.data;
     });
+  }
+
+  addToCart(product: Product) {
+    this.toastrService.success('Sepete Eklendi', product.productName);
+    this.cartService.addToCart(product);
   }
 }

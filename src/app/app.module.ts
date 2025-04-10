@@ -9,6 +9,12 @@ import { NaviComponent } from './components/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FormsModule } from '@angular/forms';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,8 +22,20 @@ import { FormsModule } from '@angular/forms';
     CategoryComponent,
     NaviComponent,
     VatAddedPipe,
+    FilterPipePipe,
+    CartSummaryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ToastrModule.forRoot({
+      // forRoot = Bu projemiz için kullanılabilir hale getir demek
+      positionClass: 'toast-bottom-right', // ayarları / sağ altta gösterecek
+    }),
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

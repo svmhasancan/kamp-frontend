@@ -14,13 +14,15 @@
             <th scope="col">Product Name</th>
             <th scope="col">Unit Price</th>
             <th scope="col">Kdv'li Fiyat</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of products |filterPipe:filterText">
             <td>{{product.productName}}</td>
             <td>{{product.unitPrice |currency}}</td>
             <td>{{product.unitPrice |vatAdded:10}}</td>
+            <td><button (click)="addToCart(product)" class="btn btn-success">Sepete Ekle</button></td>
         </tr>
     </tbody>
 </table>
