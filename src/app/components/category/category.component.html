@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <li *ngFor="let category of categories" [ngClass]="setClassNameOfCurrentCategory(category)"
+        (click)="setCurrentCategory(category)">
+        {{ category.categoryName }}
+    </li>
+
+    <br><br>
+
+    <button (click)="resetCategoryFilters()" type="button" class="btn btn-secondary">
+        Reset Category
+    </button>
+</ul>
