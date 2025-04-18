@@ -12,7 +12,7 @@ export class CartService {
   addToCart(product: Product) {
     console.log(product);
     let item = CartItems.find(
-      (c) => c.product.productId === product.categoryId
+      (c) => c.product.productId === product.categoryId //sorun burda
     );
 
     if (item) {
